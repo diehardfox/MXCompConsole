@@ -36,8 +36,23 @@ namespace MXCompConsole
             }
             else
             {
-                Console.WriteLine("Unable to read the values from the PLC");
+                Console.WriteLine("Unable to read the values from the PLC. {0}", returnCode);
             }
+
+            var label1 = "D100";
+            var value1 = new short[label.Length];
+            returnCode = control.ReadDeviceRandom2(ref label1, 1, ref value1);
+
+            if (returnCode == 0)
+            {
+                Console.WriteLine("Able to read values");
+                Console.WriteLine("{0} => {1}", label, value);
+            }
+            else
+            {
+                Console.WriteLine("Unable to read the values from the PLC. {0}", returnCode);
+            }
+
             control.Close();
         }
     }
