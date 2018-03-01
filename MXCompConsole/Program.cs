@@ -25,9 +25,9 @@ namespace MXCompConsole
                 return;
             }
 
-            var label = new string[] { "D100" };
-            var value = new int[label.Length];
-            var returnCode = control.ReadDeviceRandom(ref label, 1, ref value);
+            var label = "D100";
+            var value = new int[2];
+            var returnCode = control.ReadDeviceBlock(ref label, 2, ref value);
             
             if( returnCode == 0 )
             {
@@ -40,8 +40,8 @@ namespace MXCompConsole
             }
 
             var label1 = "D100";
-            var value1 = new short[label.Length];
-            returnCode = control.ReadDeviceRandom2(ref label1, 1, ref value1);
+            var value1 = new int[1];
+            returnCode = control.ReadDeviceBlock(ref label1, 1, ref value1);
 
             if (returnCode == 0)
             {
