@@ -46,7 +46,21 @@ namespace MXCompConsole
             if (returnCode == 0)
             {
                 Console.WriteLine("Able to read values");
-                Console.WriteLine("{0} => {1}", label, value);
+                Console.WriteLine("{0} => {1}", label1, value1);
+            }
+            else
+            {
+                Console.WriteLine("Unable to read the values from the PLC. {0}", returnCode);
+            }
+
+            var label2 = "D100";
+            var value2 = 0;
+            returnCode = control.GetDevice(ref label2, ref value2);
+
+            if (returnCode == 0)
+            {
+                Console.WriteLine("Able to read values");
+                Console.WriteLine("{0} => {1}", label2, value2);
             }
             else
             {
